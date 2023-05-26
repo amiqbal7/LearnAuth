@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 export const login = (data, navigate) => async (dispatch) => {
   try {
     const response = await axios.post(
-      `https://km4-challenge-5-api.up.railway.app/api/v1/auth/login`,
+       `${process.env.REACT_APP_AUTH_API}/api/v1/auth/login`,
       data,
       { "Content-Type": "application/json" }
     );
@@ -29,7 +29,7 @@ export const login = (data, navigate) => async (dispatch) => {
 export const register = (data, navigate) => async (dispatch) => {
   try {
     const response = await axios.post(
-      `https://km4-challenge-5-api.up.railway.app/api/v1/auth/register`,
+      `${process.env.REACT_APP_AUTH_API}/api/v1/auth/register`,
       data,
       { "Content-Type": "application/json" }
     );
@@ -64,7 +64,7 @@ export const getMe = () => async (dispatch, getState) => {
     const { token } = getState().auth;
 
     const response = await axios.get(
-      `https://km4-challenge-5-api.up.railway.app/api/v1/auth/me`,
+      `${process.env.REACT_APP_AUTH_API}/api/v1/auth/me`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
